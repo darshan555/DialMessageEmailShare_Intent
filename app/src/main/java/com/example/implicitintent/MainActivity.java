@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnDial,btnMsg,btnEmail,btnShare;
+    Button btnDial,btnMsg,btnEmail,btnShare,btnUrl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         btnMsg = findViewById(R.id.msgBTN);
         btnEmail = findViewById(R.id.emailBTN);
         btnShare = findViewById(R.id.shareBTN);
+        btnUrl = findViewById(R.id.urlBTN);
 
         btnDial.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +58,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(Intent.createChooser(iShare,"Share via"));
             }
         });
+
+        btnUrl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://www.google.com";
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(browserIntent);
+            }
+        });
+
 
     }
 }
